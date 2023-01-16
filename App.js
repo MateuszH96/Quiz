@@ -48,6 +48,12 @@ tablicaWynikow =[
   {"nick":"Basia","score":14,"total":10,"type":"fizyka","createdOn":"2020-11-22 11:09:21","updatedOn":null,"id":"62032610069ef9b2616c7622"},
   {"nick":"Mirek","score":9,"total":20,"type":"fizyka","createdOn":"2020-11-22 17:38:18","updatedOn":null,"id":"62032610069ef9b2616c7623"}
 ]
+testy = [
+  {"id":"62032610069ef9b2616c761e","name":"Moda na sukces","description":"Quiz z najważniejszych wydarzeń serialu.","tags":["tv","tasiemiec","serial"],"level":"średni","numberOfTasks":5},
+  {"id":"62032610069ef9b2616c761c","name":"Tranzystor bipolarny i polowy","description":"Test sprawdzający podstawową wiedzę z zakresu elektroniki, związany z transytorami bipolarnymi i polowymi.","tags":["elektronika","fizyka"],"level":"średni","numberOfTasks":15},
+  {"id":"62032610069ef9b2616c761d","name":"Wodzowie i dowódcy starożytnego Rzymu","description":"Odgadnij prawidłowe nazwiska lub konkretnym nazwiskom przyporządkuj odpowiednie wydarzenia.","tags":["historia","starożytny Rzym"],"level":"trudny","numberOfTasks":10},
+  {"id":"62032610069ef9b2616c761b","name":"Zagadki matematyczne","description":"Bardzo szybki test sprawdzający podstawową wiedze z matematyki.","tags":["matematyka"],"level":"podstawowy","numberOfTasks":10}
+]
 export default class App extends Component {
   constructor () {
     super();
@@ -59,7 +65,7 @@ export default class App extends Component {
     return (
       <NavigationContainer>
         <Drawer.Navigator screenOptions={{headerShown: false}}>
-          <Drawer.Screen name="Główny Ekran" component={MainScreen}/>
+          <Drawer.Screen name="Główny Ekran" component={MainScreen} initialParams={{tests: testy}}/>
           <Drawer.Screen name="Wyniki" component={Result} initialParams={{results: tablicaWynikow}}/>
           <Drawer.Screen name="Pytanie" component={Riddle} initialParams={{riddle: obj, title: "Historia"}}/>
         </Drawer.Navigator>

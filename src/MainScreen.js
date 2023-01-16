@@ -3,14 +3,9 @@ import { Component } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class MainScreen extends Component{
-    constructor(){
+    constructor({route}){
         super()
-        this.colInfo = [
-            {"id":"62032610069ef9b2616c761e","name":"Moda na sukces","description":"Quiz z najważniejszych wydarzeń serialu.","tags":["tv","tasiemiec","serial"],"level":"średni","numberOfTasks":5},
-            {"id":"62032610069ef9b2616c761c","name":"Tranzystor bipolarny i polowy","description":"Test sprawdzający podstawową wiedzę z zakresu elektroniki, związany z transytorami bipolarnymi i polowymi.","tags":["elektronika","fizyka"],"level":"średni","numberOfTasks":15},
-            {"id":"62032610069ef9b2616c761d","name":"Wodzowie i dowódcy starożytnego Rzymu","description":"Odgadnij prawidłowe nazwiska lub konkretnym nazwiskom przyporządkuj odpowiednie wydarzenia.","tags":["historia","starożytny Rzym"],"level":"trudny","numberOfTasks":10},
-            {"id":"62032610069ef9b2616c761b","name":"Zagadki matematyczne","description":"Bardzo szybki test sprawdzający podstawową wiedze z matematyki.","tags":["matematyka"],"level":"podstawowy","numberOfTasks":10}
-    ]
+        this.colInfo = route.params.tests 
     }
     createTags(input){
         return(

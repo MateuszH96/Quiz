@@ -1,5 +1,6 @@
 import { Component } from "react";
 import {Text, View,TouchableOpacity,StyleSheet} from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 export default class Riddle extends Component{
 
     constructor({route}){
@@ -33,14 +34,20 @@ export default class Riddle extends Component{
     createBtns(){
         return(
             <View style={styles.answersRow}>
-               <View style={styles.answersCol}>
+                <FlatList
+                    data={this.rid.answers}
+                    renderItem={({item}) =>(
+                        this.createBtn(item)
+                    )}
+                />
+               {/* {<View style={styles.answersCol}>
                 {this.createBtn(this.rid.answers[0])}
                 {this.createBtn(this.rid.answers[1])}
                </View>
                <View style={styles.answersCol}>
                 {this.createBtn(this.rid.answers[2])}
                 {this.createBtn(this.rid.answers[3])}
-               </View>
+               </View>} */}
             </View>
         )
     }
@@ -121,15 +128,16 @@ const styles = StyleSheet.create({
     },
     btn:{
         flex: 1,
-        paddingVertical:20,
-        paddingHorizontal: 10
+        paddingVertical:5,
+        paddingHorizontal: 10,
     },
     btnStyle:{
         flex: 1,
-        justifyContent:'center',
+        //justifyContent:'center',
         alignItems: 'center',
         borderWidth:1,
         borderColor:'black',
-        backgroundColor: 'lightgrey'
+        backgroundColor: 'lightgrey',
+        paddingVertical: 20
     }
 })
