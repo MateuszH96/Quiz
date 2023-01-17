@@ -1,19 +1,32 @@
 import { Component } from "react";
 import {Text, View,TouchableOpacity,StyleSheet} from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default class Riddle extends Component{
 
     constructor({route}){
+        console.log("test konstruktora")
         super()
         obj= route.params
         this.rid = obj.riddle
-        this.title = obj.title
+        this.title =obj.title
+        this.test = ''
         this.state={
             time: this.rid.duration
         }
         this.onPress = this.onPress.bind(this)
+        this.getData()
     }
-
+    getData = async () => {
+        try{
+            const value = await AsyncStorage.getItem('token')
+            if(value !== null){
+                console.log('powiodło się ' + value)
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
     onPress(answer){
         console.log(answer)
     }
@@ -40,14 +53,6 @@ export default class Riddle extends Component{
                         this.createBtn(item)
                     )}
                 />
-               {/* {<View style={styles.answersCol}>
-                {this.createBtn(this.rid.answers[0])}
-                {this.createBtn(this.rid.answers[1])}
-               </View>
-               <View style={styles.answersCol}>
-                {this.createBtn(this.rid.answers[2])}
-                {this.createBtn(this.rid.answers[3])}
-               </View>} */}
             </View>
         )
     }
