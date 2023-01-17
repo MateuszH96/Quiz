@@ -5,27 +5,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default class Riddle extends Component{
 
     constructor({route}){
-        console.log("test konstruktora")
         super()
         obj= route.params
         this.rid = obj.riddle
         this.title =obj.title
-        this.test = ''
         this.state={
             time: this.rid.duration
         }
         this.onPress = this.onPress.bind(this)
-        this.getData()
-    }
-    getData = async () => {
-        try{
-            const value = await AsyncStorage.getItem('token')
-            if(value !== null){
-                console.log('powiodło się ' + value)
-            }
-        }catch(err){
-            console.log(err)
-        }
     }
     onPress(answer){
         console.log(answer)

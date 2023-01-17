@@ -14,6 +14,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AsyncStorageOperate from './src/AsyncStorageOperate';
+import SplashScreen from 'react-native-splash-screen'
+
 const Drawer = createDrawerNavigator()
 obj ={
   "question": "Który wódz po śmierci Gajusza Mariusza, prowadził wojnę domową z Sullą ?",
@@ -59,7 +61,9 @@ export default class App extends Component{
   constructor () {
     super();
   }
-
+  componentDidMount() {
+      SplashScreen.hide();
+  }
   render () {
     return (
       <NavigationContainer>
