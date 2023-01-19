@@ -1,11 +1,35 @@
 import { View, StyleSheet, Text, FlatList, Touchable } from "react-native";
 import { Component } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import HttpRequest from "./HttpRequest";
+
 
 export default class MainScreen extends Component{
-    constructor({route}){
+    Navigation= null
+    Link = 'https://tgryl.pl/quiz/tests'
+    constructor({navigation}){
         super()
-        this.colInfo = route.params.tests 
+        Navigation = navigation
+
+        this.state={
+            tests: []
+        }
+        this.onPress = this.onPress.bind(this)
+    }
+    componentDidMount(){
+            fetch(this.Link).then(res =>res.json())
+            .then(
+                (response) => {
+                    const data = response
+                    const test = data.map((element) => element)
+                    test.forEach(element => {
+                        this.state.tests.push(element)
+                    });
+                    this.setState({test: this.state.tests})
+                },
+                (err)=>{
+                    console.log(err)
+                })
     }
     createTags(input){
         return(
@@ -18,11 +42,18 @@ export default class MainScreen extends Component{
             />
         )
     }
+    onPress(valId,valName){
+        Navigation.navigate('Pytanie', {id: valId, nameQuiz: valName})
+    }
     createBtns(){
         return(<FlatList
-            data = {this.colInfo}
+            data = {this.state.tests}
+            extraData ={this.state.tests}
             renderItem ={({item}) => (
-                <TouchableOpacity style={styles.flatListElementContainer}>
+                <TouchableOpacity 
+                    style={styles.flatListElementContainer}
+                    onPress={() => this.onPress(item.id,item.name)}
+                    >
                     <View>
                         <Text style={styles.nameQuiz}>
                             {item.name}
@@ -32,7 +63,7 @@ export default class MainScreen extends Component{
                         {this.createTags(item.tags)}
                     </View>
                     <View>
-                        <Text>
+                        <Text style={styles.desc}>
                             {item.description}
                         </Text>
                     </View>
@@ -86,12 +117,15 @@ const styles = StyleSheet.create({
     },
     nameQuiz:{
         fontSize: 30,
-        fontWeight: 'bold'
+        fontFamily: 'Teko-Bold'
 
     },
     tagsQuiz:{
         color: 'blue',
         marginVertical:15,
         marginHorizontal: 15
+    },
+    desc:{fontSize: 10,
+        fontFamily:'KaushanScript-Regular'
     }
 })

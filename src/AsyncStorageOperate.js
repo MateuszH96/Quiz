@@ -10,11 +10,8 @@ export default class AsyncStorageOperate {
     static getData = async (key) => {
         try {
             const value = await AsyncStorage.getItem(key)
-            if (value !== null) {
-                return 
-            } else {
-                return null
-            }
+            console.log(value)
+            return value
         } catch (err) {
             console.log(err)
         }

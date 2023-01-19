@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/AlfaSlabOne-Regular.ttf",
+      "sha1": "3379279f774fdb42b7e4bb027efb64337d791f1c"
+    },
+    {
+      "path": "assets/fonts/KaushanScript-Regular.ttf",
+      "sha1": "8b203c70f9c8f5d437eb5a87a6c7df39fb2996b7"
+    },
+    {
+      "path": "assets/fonts/Teko-Bold.ttf",
+      "sha1": "601570b4aadf5e28c41c631e1f3d87ee60d04790"
+    },
+    {
+      "path": "assets/fonts/Teko-Light.ttf",
+      "sha1": "7a53cfddcb1b94277cd0c98a716de4219ad01c4d"
+    },
+    {
+      "path": "assets/fonts/Teko-Medium.ttf",
+      "sha1": "9b2926fea3daf1c1a13ae8d0d1bfce8218b16460"
+    },
+    {
+      "path": "assets/fonts/Teko-Regular.ttf",
+      "sha1": "af065fdd632f2f58db79b4991e50ca5f7f51fb9c"
+    },
+    {
+      "path": "assets/fonts/Teko-SemiBold.ttf",
+      "sha1": "596e2556c2a4667eddf8affa1a77628a7a2e3467"
+    }
+  ]
+}
